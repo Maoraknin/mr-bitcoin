@@ -1,6 +1,5 @@
 <template>
-  <div class="about main-layout">
-    <h1>Stats</h1>
+  <div class="stats main-layout">
     <ValueChart/>
   </div>
 </template>

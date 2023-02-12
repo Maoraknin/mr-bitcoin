@@ -11,7 +11,6 @@ export const bitcoinService = {
 
 async function getRate() {
     let rate = storageService.load('rate')
-    console.log('rate:',rate)
     if(rate) return rate
     try {
         rate = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=1`)
@@ -24,9 +23,11 @@ async function getRate() {
     }
 }
 
-async function getMarketPriceHistory(timeSpan) {
+async function getMarketPriceHistory() {
+    let pricesHistory = storageService.load('prices-history')
     try {
-        const pricesHistory = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=${timeSpan}&format=json&cors=true`)
+        pricesHistory = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=1months&format=json&cors=true`)
+        storageService.save('prices-history', pricesHistory.data)
         return pricesHistory.data
     }
     catch (err) {
