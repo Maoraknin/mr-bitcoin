@@ -39,9 +39,9 @@ async function getMarketPriceHistory() {
 //     y: value in USdollar
 // }
 
-async function getAvgBlockSize(timeSpan) {
+async function getAvgBlockSize() {
     try {
-        const blockSizeAvgs = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=${timeSpan}&format=json&cors=true`)
+        const blockSizeAvgs = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=1months&format=json&cors=true`)
         return blockSizeAvgs.data
     }
     catch (err) {
