@@ -1,20 +1,19 @@
 <template>
-    <article>
-        <p>{{ contact.name }}</p>
-        <p>{{ contact.email }}</p>
-        <p>{{ contact.phone }}</p>
-    </article>
+  <article>
+    <img :src="'https://robohash.org/' + contact.name" alt="" />
+    <p>{{ contact.name }}</p>
+  </article>
 </template>
 
 <script>
 export default {
-    props: {
-        contact: {
-            type: Object,
-            required: true,
-        }
-    }
-}
+  props: {
+    contact: {
+      type: Object,
+      required: true,
+    },
+  },
+};
 </script>
 
 <style lang="scss"></style>

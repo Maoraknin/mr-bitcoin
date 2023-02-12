@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 
 import HomePage from '../pages/home.vue'
+import Stats from '../pages/stats.vue'
 import ContactIndex from '../pages/contact-index.vue'
 import ContactDetails from '../pages/contact-details.vue'
 import ContactEdit from '../pages/contact-edit.vue'
@@ -30,11 +31,12 @@ const routerOptions = {
         //     component: CarIndex,
         // },
         {
-            path: '/about',
+            path: '/stats',
+            component: Stats,
             // route level code-splitting
             // this generates a separate chunk (About.[hash].js) for this route
             // which is lazy-loaded when the route is visited.
-            component: () => import('../pages/AboutView.vue'),
+            // component: () => import('../pages/AboutView.vue'),
         },
     ],
 }

@@ -1,16 +1,36 @@
 <template>
-    <header class="app-header full main-layout">
-        <div className='header-container'>
+  <header class="app-header full main-layout">
+    <div className="header-container">
+      <div class="logo-container">
+        <img src="../assets/img/bitcoin-logo.svg" alt="" />
         <h2>Mr.Bitcoin</h2>
-        <nav>
-            <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/contact">Contacts</RouterLink>
-            <RouterLink to="/about">About</RouterLink>
-        </nav>
-        </div>
-    </header>
+      </div>
+
+      <div class="user-info">
+        <span v-if="user">{{ user.name }}</span>
+      </div>
+        <span v-if="rate">1$ = {{ rate }}₿</span>
+      <nav>
+        <RouterLink to="/">Home</RouterLink>
+        <RouterLink to="/contact">Contacts</RouterLink>
+        <RouterLink to="/stats">Stats</RouterLink>
+      </nav>
+    </div>
+  </header>
 </template>
 
 <script>
-export default {}
+import { userService } from "../services/user.service.js";
+import { bitcoinService } from "../services/bitcoin.service.js";
+export default {
+  data() {
+    return {
+      user: userService.getUser(),
+      rate: null,
+    };
+  },
+  async created() {
+    this.rate = await bitcoinService.getRate();
+  },
+};
 </script>

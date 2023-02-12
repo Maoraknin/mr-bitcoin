@@ -3,7 +3,7 @@
         <input type="text" v-model="contact.name">
         <input type="text" v-model="contact.email">
         <input type="text" v-model.number="contact.phone">
-        <button>Save</button>
+        <button class="primary">Save</button>
     </form>
 </template>
 

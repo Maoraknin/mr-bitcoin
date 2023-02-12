@@ -1,8 +1,8 @@
 <template>
-    <div class="main-container main-layout">
+    <div class="contact-index main-layout full">
         <UserMsg />
         <ContactsFilter @filter="onSetFilterBy" />
-        <RouterLink to="/contact/edit"><button>Add a Contacts</button></RouterLink>
+        <RouterLink class="add-link" to="/contact/edit"><button class="primary">Add a Contacts</button></RouterLink>
         <ContactsList @remove="removeContacts" v-if="contacts" :contacts="filteredContacts" />
     </div>
 </template>
@@ -56,8 +56,4 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.main-container {
-    position: relative;
-}
-</style>
+<style lang="scss"></style>
