@@ -1,14 +1,15 @@
 <template>
     <article>
-        <h2>{{ car.vendor }}</h2>
-        <h2>{{ car.speed }}</h2>
+        <p>{{ contact.name }}</p>
+        <p>{{ contact.email }}</p>
+        <p>{{ contact.phone }}</p>
     </article>
 </template>
 
 <script>
 export default {
     props: {
-        car: {
+        contact: {
             type: Object,
             required: true,
         }

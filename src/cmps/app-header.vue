@@ -1,11 +1,13 @@
 <template>
-    <header>
-        <h1>Cars</h1>
+    <header class="app-header full main-layout">
+        <div className='header-container'>
+        <h2>Mr.Bitcoin</h2>
         <nav>
             <RouterLink to="/">Home</RouterLink>
-            <RouterLink to="/car">Cars</RouterLink>
+            <RouterLink to="/contact">Contacts</RouterLink>
             <RouterLink to="/about">About</RouterLink>
         </nav>
+        </div>
     </header>
 </template>
 

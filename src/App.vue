@@ -1,41 +1,43 @@
 <script>
-import AppHeader from '@/cmps/app-header.vue'
-import AppFooter from '@/cmps/app-footer.vue'
+import AppHeader from "@/cmps/app-header.vue";
+import AppFooter from "@/cmps/app-footer.vue";
 export default {
-    components: {
-        AppHeader,
-        AppFooter,
-    },
-}
+  components: {
+    AppHeader,
+    AppFooter,
+  },
+};
 </script>
 
 <template>
+  <div className="app main-layout">
     <AppHeader />
-    <main>
-        <RouterView />
+    <main class="app-main-container full">
+      <RouterView />
     </main>
     <AppFooter />
+  </div>
 </template>
 
 <style scoped>
 main {
-    min-height: calc(90vh - 4rem);
+  min-height: calc(90vh - 4rem);
 }
 nav a.router-link-exact-active {
-    color: var(--color-text);
+  color: var(--color-text);
 }
 
 nav a.router-link-exact-active:hover {
-    background-color: transparent;
+  background-color: transparent;
 }
 
 nav a {
-    display: inline-block;
-    padding: 0 1rem;
-    border-left: 1px solid var(--color-border);
+  display: inline-block;
+  padding: 0 1rem;
+  border-left: 1px solid var(--color-border);
 }
 
 nav a:first-of-type {
-    border: 0;
+  border: 0;
 }
 </style>
