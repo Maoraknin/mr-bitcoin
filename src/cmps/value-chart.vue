@@ -48,13 +48,11 @@ export default {
   },
   async created() {
     this.prices = await bitcoinService.getMarketPriceHistory();
-    console.log('this.prices.values:',this.prices.values)
     this.chartData.labels = this.prices.values.map(value => {
        const date = new Date(value.x*1000)
        return `${date.getDate() + 1}.${date.getMonth() + 1}` 
         })
     this.chartData.datasets[0].data = this.prices.values.map(value => value.y)
-    console.log('this.chartData:',this.chartData)
   },
 };
 </script>
