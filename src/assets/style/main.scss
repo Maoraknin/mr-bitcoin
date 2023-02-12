@@ -1,11 +1,12 @@
 @import "setup/variables";
 @import "setup/mixins";
-// @import "setup/typography";
+@import "setup/typography";
 
 @import "basics/layout";
 @import "basics/base";
 
 
+@import 'cmps/home.scss';
 @import 'cmps/contact-index.scss';
 @import 'cmps/contact-details.scss';
 @import 'cmps/contact-edit.scss';

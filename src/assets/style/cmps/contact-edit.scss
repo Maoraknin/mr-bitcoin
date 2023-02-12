@@ -3,7 +3,8 @@
     justify-items: center;
     gap: 5px;
     padding: 10px;
-    padding-top: 50px;
+    padding-top: 80px;
+    position: relative;
 
     input {
         border: 1px solid $almost-black;
@@ -14,5 +15,14 @@
 
     button {
         margin-top: 30px;
+    }
+
+    a {
+        position: absolute;
+        right: 20px;
+        span {
+            padding-top: 20px;
+            font-size: 2rem;
+        }
     }
 }

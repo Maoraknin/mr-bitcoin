@@ -3,7 +3,7 @@
     <div className="header-container">
       <div class="logo-container">
         <img src="../assets/img/bitcoin-logo.svg" alt="" />
-        <h2>Mr.Bitcoin</h2>
+        <h2><RouterLink to="/" class="logo">Mr.Bitcoin</RouterLink></h2>
       </div>
 
       <div class="user-info">

@@ -13,7 +13,7 @@ body {
     font-size: rem(16px);
     margin: 0;
     margin: auto;
-    font-family: livvic-semi-bold;
+    font-family: Arial, Helvetica, sans-serif;
     color: $almost-black;
 
     
@@ -30,23 +30,23 @@ h6 {
 }
 
 h1{
-    font-size: 64px;
+    font-size: 56px;
     line-height: 56px;
-    font-family: livvic-bold;
+    font-family: Arial, Helvetica, sans-serif;
     &.large{
         font-size: 100px;
         line-height: 100px;
     }
 }
 h2{
-    font-size: 48px;
-    line-height: 48px;
-    font-family: livvic-bold;
+    font-size: 42px;
+    line-height: 42px;
+    font-family: Arial, Helvetica, sans-serif;
 }
 h3{
-    font-size: 18px;
+    font-size: 16px;
     line-height: 28px;
-    font-family: livvic-bold;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 

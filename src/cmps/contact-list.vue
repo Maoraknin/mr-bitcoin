@@ -16,9 +16,7 @@
           </RouterLink>
           <span
             @click="onRemoveContact(contact._id)"
-            class="material-symbols-outlined preview-icon"
-            >delete</span
-          >
+            class="material-symbols-outlined preview-icon">delete</span>
         </section>
       </li>
     </TransitionGroup>

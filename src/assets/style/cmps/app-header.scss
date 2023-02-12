@@ -1,7 +1,7 @@
 .app-header {
 color: $almost-black;
 box-shadow: rgb(0 0 0 / 19%) 0px 1px 5px;
-font-size: 1.2rem;
+font-size: 1.1rem;
 position: sticky;
 top: 0;
 background-color: white;
@@ -39,7 +39,7 @@ background-color: white;
         }
     }
 
-    .router-link-active{
+    .router-link-active:not(.logo){
         color: $p-clr1;
     }
 }

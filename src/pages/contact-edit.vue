@@ -4,6 +4,7 @@
         <input type="text" v-model="contact.email">
         <input type="text" v-model.number="contact.phone">
         <button class="primary">Save</button>
+        <RouterLink to="/contact"><span class="material-symbols-outlined">close</span></RouterLink>
     </form>
 </template>
 

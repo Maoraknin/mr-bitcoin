@@ -1,7 +1,7 @@
 'use strict'
 
 import axios from "axios"
-import {storageService} from "./storage.service.js"
+import { storageService } from "./storage.service.js"
 
 export const bitcoinService = {
     getRate,
@@ -11,10 +11,10 @@ export const bitcoinService = {
 
 async function getRate() {
     let rate = storageService.load('rate')
-    if(rate) return rate
+    if (rate) return rate
     try {
-        rate = await axios.get(`https://blockchain.info/tobtc?currency=USD&value=1`)
-        console.log('rate:',rate)
+        rate = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=1months&format=json&cors=true`)
+        console.log('rate:', rate)
         storageService.save('rate', rate.data)
         return rate.data
     }
@@ -34,10 +34,7 @@ async function getMarketPriceHistory() {
         throw new Error('Err', err)
     }
 }
-// {
-//     x: timestamp
-//     y: value in USdollar
-// }
+
 
 async function getAvgBlockSize() {
     try {
@@ -48,7 +45,4 @@ async function getAvgBlockSize() {
         throw new Error('Err', err)
     }
 }
-// {
-//     x: timestamp
-//     y: avarege block size in MB
-// }
+
