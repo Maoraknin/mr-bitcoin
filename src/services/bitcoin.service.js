@@ -25,10 +25,11 @@ async function getRate() {
 
 async function getMarketPriceHistory() {
     let pricesHistory = storageService.load('prices-history')
+    if(pricesHistory) return pricesHistory
     try {
         pricesHistory = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=1months&format=json&cors=true`)
-        storageService.save('prices-history', pricesHistory.data)
-        return pricesHistory.data
+        storageService.save('prices-history', pricesHistory.data.values)
+        return pricesHistory.data.values
     }
     catch (err) {
         throw new Error('Err', err)
@@ -37,9 +38,12 @@ async function getMarketPriceHistory() {
 
 
 async function getAvgBlockSize() {
+    let blockSizeAvgs = storageService.load('block-size-avgs')
+    if(blockSizeAvgs) return blockSizeAvgs
     try {
-        const blockSizeAvgs = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=1months&format=json&cors=true`)
-        return blockSizeAvgs.data
+        blockSizeAvgs = await axios.get(`https://api.blockchain.info/charts/avg-block-size?timespan=1months&format=json&cors=true`)
+        storageService.save('block-size-avgs', blockSizeAvgs.data.values)
+        return blockSizeAvgs.data.values
     }
     catch (err) {
         throw new Error('Err', err)

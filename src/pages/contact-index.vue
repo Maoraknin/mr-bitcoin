@@ -1,59 +1,60 @@
 <template>
-    <div class="contact-index main-layout full">
-        <UserMsg />
-        <ContactsFilter @filter="onSetFilterBy" />
-        <RouterLink class="add-link" to="/contact/edit"><button class="primary">Add a Contacts</button></RouterLink>
-        <ContactsList @remove="removeContacts" v-if="contacts" :contacts="filteredContacts" />
-    </div>
+  <div class="contact-index main-layout full">
+    <ContactsFilter @filter="onSetFilterBy" />
+    <RouterLink class="add-link" to="/contact/edit"
+      ><button class="primary">Add a Contacts</button></RouterLink
+    >
+    <ContactsList
+      @remove="removeContacts"
+      v-if="contacts"
+      :contacts="contacts"
+    />
+  </div>
 </template>
 
 <script>
-import { contactService } from '@/services/contact.service.js'
-import { bitcoinService } from '@/services/bitcoin.service.js'
-import { eventBus } from '@/services/eventBus.service.js'
+import { contactService } from "@/services/contact.service.js";
+import { eventBus } from "@/services/eventBus.service.js";
 
-import ContactsList from '@/cmps/contact-list.vue'
-import ContactsFilter from '@/cmps/contact-filter.vue'
-import UserMsg from '@/cmps/user-msg.vue'
+import ContactsList from "@/cmps/contact-list.vue";
+import ContactsFilter from "@/cmps/contact-filter.vue";
 
 export default {
-    data() {
-        return {
-            contacts: null,
-            filterBy: {},
-        }
+  data() {
+    return {
+      contacts: null,
+      filterBy: {},
+    };
+  },
+  async created() {
+    this.loadContacts();
+  },
+  methods: {
+    async loadContacts() {
+      this.contacts = await contactService.getContacts(this.filterBy);
     },
-    async created() {
-        this.contacts = await contactService.getContacts()
-        
+    async removeContacts(contactId) {
+      const msg = {
+        txt: `Contacts ${contactId} deleted.`,
+        type: "success",
+        timeout: 2500,
+      };
+      await contactService.deleteContact(contactId);
+      this.contacts = this.contacts.filter(
+        (contact) => contact._id !== contactId
+      );
+      eventBus.emit("user-msg", msg);
     },
-    methods: {
-        async removeContacts(contactId) {
-            const msg = {
-                txt: `Contacts ${contactId} deleted.`,
-                type: 'success',
-                timeout: 2500,
-            }
-            await contactService.deleteContact(contactId)
-            this.contacts = this.contacts.filter(contact => contact._id !== contactId)
-            eventBus.emit('user-msg', msg)
-        },
-        onSetFilterBy(filterBy) {
-            this.filterBy = filterBy
-        },
+    onSetFilterBy(filterBy) {
+      this.filterBy = filterBy;
+      this.loadContacts();
     },
-    computed: {
-        filteredContacts() {
-            const regex = new RegExp(this.filterBy.name, 'i')
-            return this.contacts.filter(contact => regex.test(contact.name))
-        },
-    },
-    components: {
-        ContactsList,
-        ContactsFilter,
-        UserMsg,
-    },
-}
+  },
+  components: {
+    ContactsList,
+    ContactsFilter,
+  },
+};
 </script>
 
 <style lang="scss"></style>

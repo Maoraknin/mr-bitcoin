@@ -1,6 +1,6 @@
 <template>
 <div class="chart-container">
-  <Bar v-if='chartData.labels' id="my-chart-id" :options="chartOptions" :data="chartData" />
+  <Bar v-if='avgs' id="my-chart-id" :options="chartOptions" :data="getChartData" />
 </div>
 </template>
 
@@ -31,16 +31,7 @@ export default {
   components: { Bar },
   data() {
     return {
-      chartData: {
-        labels: null,
-        datasets: [
-          {
-            label: "Avarage block size (in MB)",
-            backgroundColor: "#f7931a99",
-            data: null,
-          },
-        ],
-      },
+      avgs: null,
       chartOptions: {
         responsive: true,
       },
@@ -48,11 +39,29 @@ export default {
   },
   async created() {
     this.avgs = await bitcoinService.getAvgBlockSize();
-    this.chartData.labels = this.avgs.values.map(value => {
-       const date = new Date(value.x*1000)
-       return `${date.getDate() + 1}.${date.getMonth() + 1}` 
-        })
-    this.chartData.datasets[0].data = this.avgs.values.map(value => value.y)
+  },
+  computed: {
+    getChartData() {
+      return {
+        labels: this.getDataLabels,
+        datasets: [
+          {
+            label: 'Avarage block size (in MB)',
+            backgroundColor: '#f7931a99',
+            data: this.getDatasetData,
+          },
+        ],
+      }
+    },
+    getDataLabels() {
+      return this.avgs.map((value) => {
+        const date = new Date(value.x * 1000)
+        return `${date.getDate() + 1}.${date.getMonth() + 1}`
+      })
+    },
+    getDatasetData() {
+      return this.avgs.map((value) => value.y)
+    },
   },
 };
 </script>

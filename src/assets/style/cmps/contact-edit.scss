@@ -3,8 +3,12 @@
     justify-items: center;
     gap: 5px;
     padding: 10px;
-    padding-top: 80px;
+    padding-top: 50px;
     position: relative;
+
+    h2{
+        padding-bottom: 30px;
+    }
 
     input {
         border: 1px solid $almost-black;
@@ -24,5 +28,9 @@
             padding-top: 20px;
             font-size: 2rem;
         }
+    }
+
+    img{
+        width: 300px;
     }
 }
