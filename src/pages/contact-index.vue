@@ -22,32 +22,42 @@ import ContactsFilter from "@/cmps/contact-filter.vue";
 export default {
   data() {
     return {
-      contacts: null,
+      // contacts: null,
       filterBy: {},
     };
   },
   async created() {
-    this.loadContacts();
+    const filterBy = this.filterBy
+    this.$store.dispatch({ type: "loadContacts", filterBy});
   },
   methods: {
-    async loadContacts() {
-      this.contacts = await contactService.getContacts(this.filterBy);
-    },
     async removeContact(contactId) {
-      const msg = {
-        txt: `Contacts ${contactId} deleted.`,
-        type: "success",
-        timeout: 2500,
-      };
-      await contactService.deleteContact(contactId);
-      this.contacts = this.contacts.filter(
-        (contact) => contact._id !== contactId
-      );
-      eventBus.emit("user-msg", msg);
+      try {
+        this.$store.dispatch({ type: "removeContact", contactId });
+        const msg = {
+          txt: `Contacts ${contactId} deleted.`,
+          type: "success",
+          timeout: 2500,
+        };
+        eventBus.emit("user-msg", msg);
+      } catch (err) {
+        const msg = {
+          txt: `Cannot remove ${contactId}.`,
+          type: "error",
+          timeout: 2500,
+        };
+        eventBus.emit("user-msg", msg);
+        console.error("Cannot remove contact", err);
+      }
     },
     onSetFilterBy(filterBy) {
       this.filterBy = filterBy;
-      this.loadContacts();
+      this.$store.dispatch({ type: "loadContacts", filterBy});
+    },
+  },
+  computed: {
+    contacts() {
+      return this.$store.getters.contacts;
     },
   },
   components: {

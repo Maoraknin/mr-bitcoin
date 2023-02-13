@@ -1,7 +1,8 @@
 <template>
   <form @submit.prevent="save" v-if="contact" class="contact-edit main-layout">
     <h2>{{ getTitle }}</h2>
-    <img :src="'https://robohash.org/' + contact.name" alt="" />
+    <!-- <img :src="'https://robohash.org/' + contact.name" alt="" /> -->
+    <img :src="'https://api.dicebear.com/5.x/open-peeps/svg?seed=' + contact.name" alt="">
     <input
       type="text"
       v-model="contact.name"
@@ -47,7 +48,8 @@ export default {
         alert("Please fill all the information about the contact");
         return;
       }
-      await contactService.saveContact(this.contact);
+      const contact = this.contact
+      await this.$store.dispatch({ type: "saveContact", contact });
       this.$router.push("/contact");
     },
     clearInfo(){
