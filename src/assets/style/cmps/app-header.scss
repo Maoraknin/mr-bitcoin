@@ -39,7 +39,25 @@ background-color: white;
         }
     }
 
+    .menu-btn{
+        display: none;
+    }
+
     .router-link-active:not(.logo){
         color: $p-clr1;
+    }
+
+    @media (max-width: $break-normal) {
+        .menu-btn{
+            display: block;
+            font-size: 2rem;
+            cursor: not-allowed;
+        }
+
+        nav,
+        .rate,
+        .user-info{
+            display: none;
+        }
     }
 }

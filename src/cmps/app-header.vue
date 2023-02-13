@@ -5,11 +5,12 @@
         <img src="../assets/img/bitcoin-logo.svg" alt="" />
         <h2><RouterLink to="/" class="logo">Mr.Bitcoin</RouterLink></h2>
       </div>
+      <span class="material-symbols-outlined menu-btn">menu</span>
 
       <div class="user-info">
         <span v-if="user">{{ user.name }}</span>
       </div>
-        <span v-if="rate">1$ = {{ rate }}₿</span>
+        <span class="rate" v-if="rate">1$ = {{ rate }}₿</span>
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/contact">Contacts</RouterLink>

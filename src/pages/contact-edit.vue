@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="save" v-if="contact" class="contact-edit main-layout">
-    <h2>{{getTitle}}</h2>
+    <h2>{{ getTitle }}</h2>
     <img :src="'https://robohash.org/' + contact.name" alt="" />
     <input
       type="text"
@@ -18,7 +18,8 @@
       placeholder="Enter contact phone"
     />
     <button class="primary">Save</button>
-    <RouterLink to="/contact"
+    <a @click="clearInfo" class="clear-btn">Clear</a>
+    <RouterLink class="close-btn" to="/contact"
       ><span class="material-symbols-outlined">close</span></RouterLink
     >
   </form>
@@ -42,15 +43,24 @@ export default {
   },
   methods: {
     async save() {
+      if (!this.contact.name || !this.contact.email || !this.contact.phone) {
+        alert("Please fill all the information about the contact");
+        return;
+      }
       await contactService.saveContact(this.contact);
       this.$router.push("/contact");
     },
+    clearInfo(){
+      this.contact.name = ''
+      this.contact.email = ''
+      this.contact.phone = ''
+    }
   },
   computed: {
-    getTitle(){
-        return (this.contact._id? `Edit ${this.contact.name}` : 'Add new contact')
-    }
-  }
+    getTitle() {
+      return this.contact._id ? `Edit ${this.contact.name}` : "Add new contact";
+    },
+  },
 };
 </script>
 

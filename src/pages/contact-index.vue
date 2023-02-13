@@ -5,7 +5,7 @@
       ><button class="primary">Add a Contacts</button></RouterLink
     >
     <ContactsList
-      @remove="removeContacts"
+      @remove="removeContact"
       v-if="contacts"
       :contacts="contacts"
     />
@@ -33,7 +33,7 @@ export default {
     async loadContacts() {
       this.contacts = await contactService.getContacts(this.filterBy);
     },
-    async removeContacts(contactId) {
+    async removeContact(contactId) {
       const msg = {
         txt: `Contacts ${contactId} deleted.`,
         type: "success",

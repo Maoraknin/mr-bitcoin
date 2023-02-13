@@ -1,10 +1,39 @@
 .contact-details {
-    display: grid;
-    img{
+    display: flex;
+    position: relative;
+    gap: 50px;
+    padding-top: 30px;
+
+    @media (max-width: $break-normal) {
+        flex-direction: column;
+    }
+
+    img {
         width: 300px;
     }
-    a {
+
+    .info-container {
+        padding-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        gap: 10px;
+    }
+
+    .delete-btn {
         color: $p-clr1;
         margin-top: 30px;
+        cursor: pointer;
+    }
+
+    .close-btn {
+        position: absolute;
+        right: 20px;
+        top: 0;
+
+        span {
+            padding-top: 20px;
+            font-size: 2rem;
+        }
     }
 }

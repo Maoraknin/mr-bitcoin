@@ -1,6 +1,6 @@
 .home {
     padding: 0%0;
-    
+
     .home-hero {
         text-align: center;
         color: $almost-white;
@@ -8,15 +8,27 @@
         background-repeat: no-repeat;
         background-size: cover;
         margin-bottom: 20px;
+        position: relative;
 
-        button{
+        button {
             color: $almost-white;
             border-color: $almost-white;
+            margin-bottom: 20px;
+            @media (max-width: $break-normal) {
+                margin-bottom: 100px;
+            }
 
-            &:hover{
+            &:hover {
                 color: black;
                 background-color: rgba(255, 255, 255, 0.358);
                 border-color: rgba(255, 255, 255, 0.358);
+            }
+        }
+
+        @media (max-width: $break-normal) {
+            svg {
+                position: absolute;
+                bottom: -1px;
             }
         }
     }
