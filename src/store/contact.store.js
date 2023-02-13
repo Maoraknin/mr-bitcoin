@@ -18,6 +18,7 @@ export const contactStore = {
         },
         addContact(state, { contact }) {
             state.contacts.push(contact)
+            console.log('state.contacts:',state.contacts)
         },
         updateContact(state, { contact }) {
             const idx = state.contacts.findIndex(p => p._id === contact._id)
