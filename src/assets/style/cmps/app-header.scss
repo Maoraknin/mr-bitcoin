@@ -1,15 +1,18 @@
 .app-header {
-color: $almost-black;
-box-shadow: rgb(0 0 0 / 19%) 0px 1px 5px;
-font-size: 1.1rem;
-position: sticky;
-top: 0;
-background-color: white;
+    color: $almost-black;
+    box-shadow: rgb(0 0 0 / 19%) 0px 1px 5px;
+    font-size: 1.1rem;
+    position: sticky;
+    top: 0;
+    background-color: white;
+    // margin-bottom: 300px;
+    z-index: 2;
 
 
     .logo-container {
         display: flex;
         gap: 10px;
+
         img {
             width: 40px;
             height: 40px;
@@ -25,13 +28,16 @@ background-color: white;
         justify-content: space-between;
         align-items: center;
         padding: 10px 0;
-
+        
     }
-
+    
     nav {
         display: flex;
         align-items: center;
         gap: 40px;
+        top: -250px;
+        // transition: all 0.4s;
+        
 
         img {
             margin: 0;
@@ -39,25 +45,43 @@ background-color: white;
         }
     }
 
-    .menu-btn{
+    .menu-btn {
         display: none;
     }
 
-    .router-link-active:not(.logo){
+    .router-link-active:not(.logo) {
         color: $p-clr1;
     }
 
     @media (max-width: $break-normal) {
-        .menu-btn{
+        .menu-btn {
             display: block;
             font-size: 2rem;
-            cursor: not-allowed;
+            cursor: pointer;
         }
 
         nav,
         .rate,
-        .user-info{
+        .user-info {
             display: none;
         }
+
+        .menu-open {
+            position: fixed;
+            padding: 50px;
+            background-color: white;
+            display: block;
+            display: flex;
+            flex-direction: column;
+            z-index: 1;
+            width: 100%;
+            top: 60px;
+            left: 0;
+            box-shadow: rgb(0 0 0 / 19%) 0px 2px 3px;
+
+
+        }
     }
+
+
 }

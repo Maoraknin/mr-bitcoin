@@ -3,18 +3,18 @@
     <div className="header-container">
       <div class="logo-container">
         <img src="../assets/img/bitcoin-logo.svg" alt="" />
-        <h2><RouterLink to="/" class="logo">Mr.Bitcoin</RouterLink></h2>
+        <h2><RouterLink @click="toggleNavbar" to="/" class="logo">Mr.Bitcoin</RouterLink></h2>
       </div>
-      <span class="material-symbols-outlined menu-btn">menu</span>
+      <span class="material-symbols-outlined menu-btn" @click="toggleNavbar">menu</span>
 
-      <div class="user-info">
+      <!-- <div class="user-info">
         <span v-if="user">{{ user.name }}</span>
-      </div>
-        <span class="rate" v-if="rate">1$ = {{ rate }}₿</span>
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/contact">Contacts</RouterLink>
-        <RouterLink to="/stats">Stats</RouterLink>
+      </div> -->
+      <span class="rate" v-if="rate">1$ = {{ rate }}₿</span>
+      <nav ref="nav">
+        <RouterLink @click="toggleNavbar" to="/">Home</RouterLink>
+        <RouterLink @click="toggleNavbar" to="/contact">Contacts</RouterLink>
+        <RouterLink @click="toggleNavbar" to="/stats">Stats</RouterLink>
       </nav>
     </div>
   </header>
@@ -26,12 +26,17 @@ import { bitcoinService } from "../services/bitcoin.service.js";
 export default {
   data() {
     return {
-      user: userService.getUser(),
+      // user: userService.getUser(),
       rate: null,
     };
   },
   async created() {
     this.rate = await bitcoinService.getRate();
+  },
+  methods: {
+    toggleNavbar() {
+      this.$refs.nav.classList.toggle("menu-open")
+    },
   },
 };
 </script>

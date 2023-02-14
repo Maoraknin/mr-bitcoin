@@ -1,11 +1,11 @@
 <template>
   <div v-if="contact" class="contact-details main-layout">
-    <img :src="'https://api.dicebear.com/5.x/open-peeps/svg?seed=' + contact.name" alt="">
+    <img :src="'https://robohash.org/' + contact.name + '?set=set5'" alt="" />
+    <!-- <img :src="'https://api.dicebear.com/5.x/open-peeps/svg?seed=' + contact.name" alt=""> -->
     <div class="info-container">
       <h2>{{ contact.name }}</h2>
       <h3>Email: {{ contact.email }}</h3>
       <h3>Phone: {{ contact.phone }}</h3>
-      <!-- <RouterLink to="/contact"> Back </RouterLink> -->
       <RouterLink class="close-btn" to="/contact"
         ><span class="material-symbols-outlined">close</span></RouterLink
       >

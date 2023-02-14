@@ -1,5 +1,5 @@
 .home {
-    padding: 0%0;
+    padding: 0;
 
     .home-hero {
         text-align: center;
@@ -9,6 +9,7 @@
         background-size: cover;
         margin-bottom: 20px;
         position: relative;
+        z-index: 0;
 
         button {
             color: $almost-white;

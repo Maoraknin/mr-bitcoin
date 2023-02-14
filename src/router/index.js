@@ -5,6 +5,7 @@ import Stats from '../pages/stats.vue'
 import ContactIndex from '../pages/contact-index.vue'
 import ContactDetails from '../pages/contact-details.vue'
 import ContactEdit from '../pages/contact-edit.vue'
+import SignUp from '../pages/sign-up.vue'
 
 
 const routerOptions = {
@@ -26,10 +27,10 @@ const routerOptions = {
             path: '/contact/edit/:_id?',
             component: ContactEdit,
         },
-        // {
-        //     path: '/stats',
-        //     component: CarIndex,
-        // },
+        {
+            path: '/signup',
+            component: SignUp,
+        },
         {
             path: '/stats',
             component: Stats,

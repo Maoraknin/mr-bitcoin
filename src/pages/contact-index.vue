@@ -20,7 +20,6 @@ import ContactsFilter from "@/cmps/contact-filter.vue";
 export default {
   data() {
     return {
-      // contacts: null,
       filterBy: {},
     };
   },
