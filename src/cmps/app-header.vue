@@ -7,12 +7,12 @@
       </div>
       <span class="material-symbols-outlined menu-btn" @click="toggleNavbar">menu</span>
 
-      <!-- <div class="user-info">
+      <div class="user-info">
         <span v-if="user">{{ user.name }}</span>
-      </div> -->
+      </div>
       <span class="rate" v-if="rate">1$ = {{ rate }}₿</span>
       <nav ref="nav">
-        <RouterLink @click="toggleNavbar" to="/">Home</RouterLink>
+        <RouterLink @click="toggleNavbar" to="/home">Home</RouterLink>
         <RouterLink @click="toggleNavbar" to="/contact">Contacts</RouterLink>
         <RouterLink @click="toggleNavbar" to="/stats">Stats</RouterLink>
       </nav>
@@ -26,12 +26,13 @@ import { bitcoinService } from "../services/bitcoin.service.js";
 export default {
   data() {
     return {
-      // user: userService.getUser(),
+      user: null,
       rate: null,
     };
   },
   async created() {
     this.rate = await bitcoinService.getRate();
+    this.user = await userService.getLogedUser()
   },
   methods: {
     toggleNavbar() {

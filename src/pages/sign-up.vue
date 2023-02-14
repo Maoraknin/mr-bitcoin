@@ -44,9 +44,14 @@ export default {
     };
   },
   methods: {
-    onSubmit() {
-      if (this.isSignUp) userService.signup(this.user.name, this.user.password);
-      else userService.login(this.user.name, this.user.password);
+    async onSubmit() {
+      if (this.isSignUp) {
+          await userService.signup(this.user.name, this.user.password);
+          this.$router.push("/home");
+      } else{
+          const isLoggedIn = await userService.login(this.user.name, this.user.password);
+          if(isLoggedIn) this.$router.push("/home");
+      } 
     },
     onToggleSignUp() {
       this.isSignUp = !this.isSignUp;

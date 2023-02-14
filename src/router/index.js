@@ -13,6 +13,10 @@ const routerOptions = {
     routes: [
         {
             path: '/',
+            redirect: '/signup'
+        },
+        {
+            path: '/home',
             component: HomePage,
         },
         {

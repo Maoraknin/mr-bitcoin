@@ -31,6 +31,7 @@ export const userService = {
     // remove,
     login,
     signup,
+    getLogedUser
     // getLoginToken,
     // signupTest
 }
@@ -84,8 +85,13 @@ async function login(name, password) {
     localStorage.logedin_user = []
     const users = await dbService.query(USER_KEY)
     const user = users.filter(u => u.name === name)
-    if (!user) return Promise.reject('Login failed')
+    if (!user.length) return Promise.reject('Login failed')
     await dbService.insert(LOGEDIN_USER, user)
     return Promise.resolve(user)
 
 }
+
+async function getLogedUser() {
+    const logedin = await dbService.getLogedInUser(LOGEDIN_USER)
+    return logedin[0]
+    }

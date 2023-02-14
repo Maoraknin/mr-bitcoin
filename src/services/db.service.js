@@ -10,6 +10,7 @@ export const dbService = {
     post,
     put,
     insert,
+    getLogedInUser,
 }
 
 const ID_FIELD = '_id'
@@ -63,4 +64,9 @@ async function insert(collectionName, items) {
 
     storageService.save(collectionName, collection)
     return Promise.resolve()
+}
+
+async function getLogedInUser(user) {
+    var collection = await query(user)
+    return collection
 }
