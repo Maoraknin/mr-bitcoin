@@ -10,6 +10,7 @@
 
     img {
         width: 300px;
+        align-self: flex-start;
     }
 
     .info-container {
@@ -34,6 +35,21 @@
         span {
             padding-top: 20px;
             font-size: 2rem;
+        }
+    }
+
+    .tip-form{
+        input{
+            width: 50px;
+        }
+        button{
+            background-color: inherit;
+            border: 1px solid $p-clr1;
+            color: $p-clr1;
+            margin-left: 10px;
+            padding: 2px 5px;
+            border-radius: 4px;
+            cursor: pointer;
         }
     }
 }

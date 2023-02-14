@@ -53,9 +53,7 @@ export default {
       this.$router.push("/contact");
     },
     clearInfo(){
-      this.contact.name = ''
-      this.contact.email = ''
-      this.contact.phone = ''
+      this.contact = contactService.getEmptyContact()
     }
   },
   computed: {

@@ -8,7 +8,7 @@
       <span class="material-symbols-outlined menu-btn" @click="toggleNavbar">menu</span>
 
       <div class="user-info">
-        <span v-if="user">{{ user.name }}</span>
+        <span v-if="user" v-bind="user">{{ user.name }}</span>
       </div>
       <span class="rate" v-if="rate">1$ = {{ rate }}₿</span>
       <nav ref="nav">
