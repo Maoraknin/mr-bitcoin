@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import ContactPreview from "@/cmps/contact-preview.vue";
+import ContactPreview from "./contact-preview.vue";
 export default {
   props: {
     contacts: {

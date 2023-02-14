@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import { eventBus } from "@/services/eventBus.service.js";
-import ContactsList from "@/cmps/contact-list.vue";
-import ContactsFilter from "@/cmps/contact-filter.vue";
+import { eventBus } from "../services/eventBus.service.js";
+import ContactsList from "../cmps/contact-list.vue";
+import ContactsFilter from "../cmps/contact-filter.vue";
 
 export default {
   data() {

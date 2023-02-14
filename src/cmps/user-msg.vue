@@ -7,7 +7,8 @@
 </template>
 
 <script>
-import { eventBus } from '@/services/eventBus.service.js'
+// import { eventBus } from '@/services/eventBus.service.js'
+import { eventBus } from '../services/eventBus.service.js'
 export default {
     data() {
         return {

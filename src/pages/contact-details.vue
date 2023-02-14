@@ -26,9 +26,9 @@
 </template>
 
 <script>
-import { contactService } from "@/services/contact.service.js";
+import { contactService } from "../services/contact.service.js";
 import { userService } from "../services/user.service.js";
-import { eventBus } from "@/services/eventBus.service.js";
+import { eventBus } from "../services/eventBus.service.js";
 
 export default {
   data() {
