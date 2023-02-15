@@ -13,7 +13,7 @@ async function getRate() {
     let rate = storageService.load('rate')
     if (rate) return rate
     try {
-        rate = await axios.get(`https://api.blockchain.info/charts/market-price?timespan=1months&format=json&cors=true`)
+        rate = await axios.get(`'https://blockchain.info/tobtc?currency=USD&value=1`)
         console.log('rate:', rate)
         storageService.save('rate', rate.data)
         return rate.data
